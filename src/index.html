@@ -10,11 +10,31 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>
-        Hello World
-    </h1>
-    <img src="/assets/images/cat.jpeg" alt="" width="300">
+    
+    <div class="wraper">
+        <div class="form-container">
+            <form action="" class="register-form" autocomplete="on">
+                <h3 class="register-form__title">Register</h3>
+                <label class="register-form__label">
+                    Name:
+                    <input class="js-form-name" type="text" />
+                </label>
+                <label class="register-form__label">
+                    Password:
+                    <input class="js-form-password" type="password" />
+                </label>
+                <label class="register-form__label">
+                    E-mail:
+                    <input class="js-form-email" type="text" name="email" />
+                </label>
+                <button class="btn js-register-btn" type="submit">Submit</button>
+            </form>
+            <div class="form-container__footer">
+                <!-- <span class="footer__message"></span> -->
+            </div>
 
+        </div>
+    </div>
 
     <script src="/scripts.js"></script>
 </body>

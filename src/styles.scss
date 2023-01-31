@@ -1,3 +1,96 @@
+@import "assets/reset.scss"; /* Import reset.css */
+
+:root {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgb(37, 37, 37);
+  --form-border: rgb(61, 60, 60);
+  --btn-bg-color: rgba(69, 112, 19, 0.4);
+  --form-bg-color: #1a1919;
+  --font-color-light: rgb(201, 198, 198);
+  --body-bg-color: rgb(39 46 46);
+  --btn-hover-outline: orange;
+  --error-message-bg: rgba(180, 143, 143, 0.233);
+  --success-message-bg: rgba(143, 180, 143, 0.233);
+}
+
 body {
-  background-color: antiquewhite;
+  background-color: var(--body-bg-color);
+}
+
+.wraper {
+  display: flex;
+  margin: 0 auto;
+  padding: 100px 10px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  max-width: 320px;
+  background-color: var(--form-bg-color);
+  color: var(--font-color-light);
+  margin: 0 auto;
+  border: 2px solid var(--form-border);
+  border-radius: 10px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:10px;
+  padding: 30px 50px 50px 50px;
+}
+
+.register-form > button {
+  margin-top:20px;
+}
+
+.register-form__label > input {
+  border-radius: 5px;
+  border: none;
+}
+
+.register-form__label {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  padding: 2px 60px;
+  align-self: center;
+  border-radius: 8px;
+  color: var(--font-color-light);
+  border: 1px solid transparent;
+  background-color: var(--btn-bg-color);
+  cursor: pointer;
+  &:hover{
+    outline: 1px solid var(--btn-hover-outline);
+  }
+}
+
+.register-form__title {
+  font-size: 2rem;
+}
+
+.form-container__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 20px 20px 20px;
+  width: 100%;
+}
+
+.footer__message {
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  &--error {
+    background-color: var(--error-message-bg);
+  }
+  &--success {
+    background-color: var(--success-message-bg);
+  }
 }
