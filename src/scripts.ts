@@ -19,18 +19,20 @@ const verifyRegistrationForm = () => {
   const emailErrorMsg = $('.js-email-error-msg');
   let isValidCounter = 0;
 
-  // Check if all fields are filled out.
-  if (!registeredName || !registeredPassword || !registeredEmail) {
-    if (emptyFieldsErrorMsgEle) {
+  const checkFieldsNotEmpty = () => {
+    if (!registeredName || !registeredPassword || !registeredEmail) {
+      if (emptyFieldsErrorMsgEle) {
+        emptyFieldsErrorMsg.slideUp('normal', () => $(emptyFieldsErrorMsg).remove());
+      }
+      emptyFieldsErrorMsgEle.text('- Some fields are empty. Please fill out all fields!');
+      msgContainer.append(emptyFieldsErrorMsgEle);
+    } else {
       emptyFieldsErrorMsg.slideUp('normal', () => $(emptyFieldsErrorMsg).remove());
+      isValidCounter += 1;
     }
-    emptyFieldsErrorMsgEle.text('- Some fields are empty. Please fill out all fields!');
-    msgContainer.append(emptyFieldsErrorMsgEle);
-  } else {
-    emptyFieldsErrorMsg.slideUp('normal', () => $(emptyFieldsErrorMsg).remove());
-    isValidCounter += 1;
+  };
 
-    // Validate name.
+  const validateName = () => {
     if (!(/^[a-zA-Z]{2,50}$/.test(String(registeredName)))) {
       if (nameErrorMsgEle) {
         nameErrorMsg.slideUp('normal', () => $(nameErrorMsg).remove());
@@ -38,11 +40,12 @@ const verifyRegistrationForm = () => {
       nameErrorMsgEle.html('- The <i>name</i> must have at least 2 characters and can only contain letters. Max 50 characters.');
       msgContainer.append(nameErrorMsgEle);
     } else {
-      nameErrorMsg.slideUp('normal', () => $(nameErrorMsg).remove());
       isValidCounter += 1;
+      nameErrorMsg.slideUp('normal', () => $(nameErrorMsg).remove());
     }
+  };
 
-    // Validate password.
+  const validatePassword = () => {
     if (!(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(String(registeredPassword)))) {
       if (passwordErrorMsgEle) {
         passwordErrorMsg.slideUp('normal', () => $(passwordErrorMsg).remove());
@@ -53,8 +56,9 @@ const verifyRegistrationForm = () => {
       passwordErrorMsg.slideUp('normal', () => $(passwordErrorMsg).remove());
       isValidCounter += 1;
     }
+  };
 
-    // Validate email.
+  const validateEmail = () => {
     if (!(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(String(registeredEmail)))) {
       if (emailErrorMsgEle) {
         emailErrorMsg.slideUp('normal', () => $(emailErrorMsg).remove());
@@ -65,18 +69,32 @@ const verifyRegistrationForm = () => {
       emailErrorMsg.slideUp('normal', () => $(emailErrorMsg).remove());
       isValidCounter += 1;
     }
-  }
+  };
 
-  // Valid form message.
-  if (isValidCounter === 4) {
-    if (successMsgEle) {
+  const successMessage = () => {
+    if (isValidCounter === 4) {
+      if (successMsgEle) {
+        successMsg.slideUp('normal', () => $(successMsg).remove());
+      }
+      successMsgEle.html('- Registration form is valid!');
+      msgContainer.append(successMsgEle);
+    } else {
       successMsg.slideUp('normal', () => $(successMsg).remove());
     }
-    successMsgEle.html('- Registration form is valid!');
-    msgContainer.append(successMsgEle);
-  } else {
-    successMsg.slideUp('normal', () => $(successMsg).remove());
-  }
+  };
+
+  const testInput = () => {
+    checkFieldsNotEmpty();
+    if (isValidCounter === 1) {
+      validateName();
+      validatePassword();
+      validateEmail();
+    }
+    if (isValidCounter === 4) {
+      successMessage();
+    }
+  };
+  testInput();
 };
 
 $(() => { // shorthand for $(document).ready(function(){ ... });
