@@ -115,5 +115,3 @@ $(() => { // shorthand for $(document).ready(function(){ ... });
 });
 
 export default verifyRegistrationForm;
-
-verifyRegistrationForm('', 'ffa$4344332', '');
