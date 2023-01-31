@@ -1,8 +1,9 @@
-// import {verifyRegistrationForm, registeredName} from './scripts';
+import verifyRegistrationForm from './scripts';
 
-// describe('Check isValidCounter', () => {
-//   test('should be 0', () => {
-//     verifyRegistrationForm.registeredPassword = '';
-//     expect(verifyRegistrationForm()).toEqual(false);
-//   });
-// });
+describe('Check fields', () => {
+  test('Should be Empty fields', () => {
+    const consoleSpy = jest.spyOn(console, 'log');
+    verifyRegistrationForm('', '', '');
+    expect(consoleSpy).toHaveBeenCalledWith('Empty fields');
+  });
+});
