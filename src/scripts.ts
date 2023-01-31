@@ -94,7 +94,8 @@ const verifyRegistrationForm = () => {
       successMessage();
     }
   };
-  testInput();
+
+  testInput(); // Call testInput() to test all inputs and give error/success message.
 };
 
 $(() => { // shorthand for $(document).ready(function(){ ... });
