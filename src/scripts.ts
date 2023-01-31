@@ -1,4 +1,5 @@
-import $ from 'jquery';
+// eslint-disable-next-line import/no-extraneous-dependencies
+const $ = require('jquery');
 
 const registerBtn = $('.js-register-btn');
 let registeredName: string;
