@@ -18,7 +18,7 @@ $('.js-form-email').on('input', function () {
   registeredEmail = String($(this).val());
 });
 
-const verifyRegistrationForm = (name?: string, password?: string, email?: string) => {
+const verifyRegistrationForm = (name: string, password: string, email: string) => {
   // const registeredName = $('.js-form-name').val();
   // const registeredPassword = $('.js-form-password').val();
   // const registeredEmail = $('.js-form-email').val();
@@ -79,9 +79,10 @@ const verifyRegistrationForm = (name?: string, password?: string, email?: string
     }
   };
 
-  const successMessage = () => {
+  const success = () => {
     successMsgEle.html('- Registration form is valid!');
     msgContainer.append(successMsgEle);
+    console.log('Success');
   };
 
   const removeMessages = () => {
@@ -101,7 +102,7 @@ const verifyRegistrationForm = (name?: string, password?: string, email?: string
       validateEmail();
     }
     if (isValidCounter === 4) {
-      successMessage();
+      success();
     }
   };
 
